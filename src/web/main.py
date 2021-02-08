@@ -1,11 +1,17 @@
-from flask import Flask
+from flask import Flask, render_template, request
 
 app = Flask("WebScrapper")
 
 
 @app.route("/")
 def home():
-    return "Hello Welcome to Flask"
+    return render_template("index.html")
 
 
-app.run(host="0.0.0.0")
+@app.route("/report")
+def report():
+    keyword = request.args.get("keyword")
+    return render_template("report.html", searchingBy=keyword)
+
+
+app.run(host="127.0.0.1")
