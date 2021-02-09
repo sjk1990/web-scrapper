@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect
-
+from flask import Flask, render_template, request, redirect, send_file
 import sys
 
 sys.path.append("../scrapper")
 from so import get_jobs
+from save import save_to_file
 
 app = Flask("WebScrapper")
 
@@ -45,7 +45,8 @@ def export():
         jobs = db.get(keyword)
         if not jobs:
             raise Exception()
-        return f"Generate CSV for {keyword}"
+        save_to_file(jobs)
+        return send_file("jobs.csv")
     except:
         return redirect("/")
 
