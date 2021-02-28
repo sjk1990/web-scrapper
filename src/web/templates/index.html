@@ -15,12 +15,16 @@
             align-items: center;
             flex-direction: column;
             height: 100%;
-            background-image: url('../static/img/mountains.jpg')
+            background-image: url('../static/img/mountains.jpg');
+        }
+        h4{
+            color: white;
         }
     </style>
 </head>
 <body>
     <h1>Job Search</h1>
+    <h4>* only english search keyword now...</h4>
     <form action="/report" >
         <input placeholder="Search for a job" required name="keyword"/>
         <button>Search</button>
